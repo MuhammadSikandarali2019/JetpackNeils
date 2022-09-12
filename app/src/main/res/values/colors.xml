@@ -10,4 +10,5 @@
     <color name="lightGrey">#F7F7FA</color>
     <color name="followBtnColor">#514EB6</color>
     <color name="editProfileText">#514EB6</color>
+    <color name="titleProfile">#919194</color>
 </resources>

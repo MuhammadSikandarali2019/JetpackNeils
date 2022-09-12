@@ -1,7 +1,9 @@
 package com.example.neliscomposeproject.activities
 
 import android.app.Activity
+import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
@@ -18,7 +20,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.HorizontalAlignmentLine
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -75,11 +79,11 @@ private fun MainContent(context: Activity) {
             ProfileProperty(label = "Username", value = "Selena Grande")
             Spacer(modifier = Modifier.height(16.dp))
             ProfileProperty(label = "Bio", stringResource(id = R.string.bio))
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Row() {
-                SaveChangesButton()
-            }
+            Spacer(modifier = Modifier.height(24.dp))
+            SaveChangesButton(context)
+//            Row(  horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+//
+//            }
 
 
         }
@@ -89,16 +93,31 @@ private fun MainContent(context: Activity) {
 
 
 @Composable
-fun SaveChangesButton() {
-    Button(
-        modifier = Modifier.fillMaxWidth().height(40.dp),
-        onClick = {
-            // do something here
-        },
-        shape = RoundedCornerShape(50)
+fun SaveChangesButton(context : Context) {
+
+
+    Column(
+        modifier = Modifier.fillMaxWidth().fillMaxHeight(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Save Changes", fontSize = 12.sp)
+        Button(
+
+
+            onClick = {
+
+                      Toast.makeText(context,"Changes Saved.",Toast.LENGTH_SHORT).show()
+                // do something here
+            }, Modifier.width(300.dp).padding(8.dp),
+            shape = RoundedCornerShape(50),
+            colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.followBtnColor)),
+
+            ) {
+            Text(text = "Save Changes", fontSize = 14.sp , color = Color.White)
+        }
     }
+
+
 }
 
 
@@ -174,13 +193,14 @@ fun ProfileProperty(label: String, value: String, isLink: Boolean = false) {
         Text(
             text = label,
             modifier = Modifier.baselineHeight(24.dp),
-            style = MaterialTheme.typography.h6,
-            color = MaterialTheme.colors.onSurface
+            style = MaterialTheme.typography.caption,
+//            color = MaterialTheme.colors.onSurface,
+            color = colorResource(id = R.color.titleProfile)
         )
         val style = if (isLink) {
             MaterialTheme.typography.body1.copy(color = MaterialTheme.colors.primary)
         } else {
-            MaterialTheme.typography.h6
+            MaterialTheme.typography.body2
         }
         Text(
             text = value,

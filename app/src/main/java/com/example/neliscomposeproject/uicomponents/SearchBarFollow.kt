@@ -6,9 +6,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,7 +28,7 @@ import com.example.neliscomposeproject.R
 
 
 @Composable
-fun ReplySearchBar(modifier: Modifier = Modifier) {
+fun MySearchBar(modifier: Modifier = Modifier) {
 
     var searchText by remember { mutableStateOf(TextFieldValue("")) }
 
@@ -50,7 +51,7 @@ fun ReplySearchBar(modifier: Modifier = Modifier) {
         TextField(
             value = searchText,
             placeholder = {
-                Text(stringResource(R.string.placeholder_search))
+                Text(stringResource(R.string.searchPlaceHolder))
             },
 
             onValueChange = {
@@ -80,5 +81,5 @@ fun ReplySearchBar(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 fun SearchPreview() {
-    ReplySearchBar()
+    MySearchBar()
 }

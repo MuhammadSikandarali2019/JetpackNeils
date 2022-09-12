@@ -1,4 +1,5 @@
 package com.example.neliscomposeproject.activities
+
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,15 +10,18 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.neliscomposeproject.R
 import com.example.neliscomposeproject.ui.theme.NelisComposeProjectTheme
+import com.example.neliscomposeproject.ui.theme.Satosh
 import com.example.neliscomposeproject.uicomponents.AlignSuggestedPeople
-import com.example.neliscomposeproject.uicomponents.ReplySearchBar
+import com.example.neliscomposeproject.uicomponents.MySearchBar
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,7 +78,11 @@ private fun MyBottomNavigation(modifier: Modifier = Modifier, activity: MainActi
 //                Text(stringResource(R.string.bottomNav_add))
 //            },
             selected = false,
-            onClick = {}
+            onClick = {
+
+                val intent = Intent(activity, CreatePostActivity::class.java)
+                activity.startActivity(intent)
+            }
         )
 
         BottomNavigationItem(
@@ -119,9 +127,9 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         modifier.verticalScroll(rememberScrollState())
     ) {
         Spacer(Modifier.height(32.dp))
-        ReplySearchBar()
+        MySearchBar()
 //        SearchBar(Modifier.padding(horizontal = 16.dp))
-        HomeSection(title = R.string.suggestedPeople) {
+        HomeSectionOne(title = R.string.suggestedPeople) {
             AlignSuggestedPeople()
         }
         HomeSection(title = R.string.discoverFeeds) {
@@ -150,6 +158,42 @@ fun HomeSection(
                 .paddingFromBaseline(top = 40.dp, bottom = 8.dp)
                 .padding(horizontal = 16.dp)
         )
+        Spacer(Modifier.height(16.dp))
+        content()
+    }
+}
+
+@Composable
+fun HomeSectionOne(
+    @StringRes title: Int,
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
+) {
+    Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            text = stringResource(title),
+            style = MaterialTheme.typography.subtitle2,
+            modifier = Modifier
+                .paddingFromBaseline(top = 40.dp, bottom = 8.dp)
+                .padding(horizontal = 16.dp)
+        )
+
+        Text(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f)
+                .paddingFromBaseline(top = 40.dp, bottom = 8.dp)
+                .padding(16.dp),
+            textAlign = TextAlign.End,
+            text = "View All",
+            fontFamily = Satosh,
+            color = MaterialTheme.colors.primary
+        )
+
+
+    }
+
+    Column {
         Spacer(Modifier.height(16.dp))
         content()
     }

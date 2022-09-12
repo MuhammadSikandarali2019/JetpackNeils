@@ -38,26 +38,7 @@ fun MyTopAppBar(context: Activity, title: String = "") {
     )
 }
 
-@Composable
-fun MyTopAppBarMainScreen(context: Application, title: String = "") {
-    TopAppBar(
-        title = { Text(title) },
-        backgroundColor = Color.White,
-//        navigationIcon = {
-//            IconButton(onClick = {
-//
-//                Toast.makeText(context, "go back ", Toast.LENGTH_SHORT).show()
-//            }) {
-//                Icon(
-////                    painterResource(id = R.drawable.ic_back_btn),
-//                    imageVector = Icons.Filled.ArrowBack,
-//                    contentDescription = "Navigation icon"
-//                )
-//            }
-//        },
-        elevation = 0.dp
-    )
-}
+
 
 @Preview
 @Composable

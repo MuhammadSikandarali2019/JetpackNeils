@@ -22,7 +22,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.HorizontalAlignmentLine
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -30,7 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.neliscomposeproject.R
-import com.example.neliscomposeproject.activities.ui.theme.NelisComposeProjectTheme
+import com.example.neliscomposeproject.ui.theme.NelisComposeProjectTheme
 import com.example.neliscomposeproject.uicomponents.MyTopAppBar
 import com.example.neliscomposeproject.utils.baselineHeight
 
@@ -48,7 +47,6 @@ class ProfileActivity : ComponentActivity() {
 
                     MainContent(this)
 
-//                    Greeting2("Android")
                 }
             }
         }
@@ -81,10 +79,6 @@ private fun MainContent(context: Activity) {
             ProfileProperty(label = "Bio", stringResource(id = R.string.bio))
             Spacer(modifier = Modifier.height(24.dp))
             SaveChangesButton(context)
-//            Row(  horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-//
-//            }
-
 
         }
 
@@ -119,35 +113,6 @@ fun SaveChangesButton(context : Context) {
 
 
 }
-
-
-//@Composable
-//private fun ProfileHeader(
-//    scrollState: ScrollState,
-//    data: ProfileScreenState,
-//    containerHeight: Dp
-//) {
-//    val offset = (scrollState.value / 2)
-//    val offsetDp = with(LocalDensity.current) { offset.toDp() }
-//
-//    data.photo?.let {
-//        Image(
-//            modifier = Modifier
-//                .heightIn(max = containerHeight / 2)
-//                .fillMaxWidth()
-//                // TODO: Update to use offset to avoid recomposition
-//                .padding(
-//                    start = 16.dp,
-//                    top = offsetDp,
-//                    end = 16.dp
-//                )
-//                .clip(CircleShape),
-//            painter = painterResource(id = it),
-//            contentScale = ContentScale.Crop,
-//            contentDescription = null
-//        )
-//    }
-//}
 
 
 @Composable
@@ -228,15 +193,15 @@ private fun PreviewMainContent() {
     MainContent(ProfileActivity())
 }
 
-@Composable
-fun Greeting2(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview2() {
-    NelisComposeProjectTheme {
-        Greeting2("Android")
-    }
-}
+//@Composable
+//fun Greeting2(name: String) {
+//    Text(text = "Hello $name!")
+//}
+//
+//@Preview(showBackground = true)
+//@Composable
+//fun DefaultPreview2() {
+//    NelisComposeProjectTheme {
+//        Greeting2("Android")
+//    }
+//}

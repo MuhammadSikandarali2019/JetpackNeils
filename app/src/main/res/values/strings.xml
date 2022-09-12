@@ -5,7 +5,8 @@
     <string name="bottomNav_add">Add Post</string>
     <string name="bottomNav_message">sms</string>
     <string name="bottomNav_search">search</string>
-    <string name="placeholder_search">Search</string>
+    <string name="note">Write Caption.</string>
+    <string name="searchPlaceHolder">Search</string>
     <string name="name1">Ariana grande</string>
     <string name="editProfileImg">Change  Profile Picture</string>
     <string name="name2">Mickey Park</string>
@@ -14,6 +15,9 @@
     <string name="suggestedPeople">Suggested People</string>
     <string name="discoverFeeds">Discover Feeds</string>
     <string name="dummyImage">Discover Feeds Image</string>
+    <string name="addHashtag">Add Hashtag</string>
+    <string name="autoDelete">Auto-Delete Post in Week</string>
+    <string name="addFriend">Add Friend</string>
 
     <string name="bio"> Lorem amet dolor ipsum sit, consectetur adipiscing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua.😍😊❤
 </string>

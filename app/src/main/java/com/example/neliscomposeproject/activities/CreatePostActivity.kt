@@ -80,10 +80,14 @@ fun TaskItem(
             text = taskName,
             fontFamily = Satosh
         )
-        IconButton(onClick = onClose,
+        IconButton(
+            onClick = onClose,
         ) {
 
-         Icon(painter = painterResource(id = R.drawable.ic_baseline_navigate_next_24), contentDescription = null )
+            Icon(
+                painter = painterResource(id = R.drawable.ic_baseline_navigate_next_24),
+                contentDescription = null
+            )
 //            painterResource(id = R.drawable.ic_baseline_navigate_next_24)
 //            Icon(Icons.Filled.ArrowForward, contentDescription = "Close")
         }
@@ -101,6 +105,9 @@ fun CreatePostRowAutoDelete(
 ) {
 
 
+    var checkValue by remember {
+        mutableStateOf(false)
+    }
 
     Row(
         modifier = Modifier,
@@ -122,8 +129,12 @@ fun CreatePostRowAutoDelete(
             fontFamily = Satosh
         )
         Switch(
-            checked = checked,
-            onCheckedChange = onCheckedChange
+            checked = checkValue,
+            onCheckedChange = {
+
+
+                checkValue = it
+            }
         )
 //        IconButton(onClick = onClose) {
 //            Icon(Icons.Filled.Close, contentDescription = "Close")
@@ -141,10 +152,8 @@ fun PreviewItemRow() {
 }
 
 
-
 @Composable
-private fun WriteCaptionRow(modifier: Modifier  , drawableId: Int = R.drawable.ic_rect6)
-{
+private fun WriteCaptionRow(modifier: Modifier, drawableId: Int = R.drawable.ic_rect6) {
 
     var noteText by remember { mutableStateOf(TextFieldValue("")) }
     Row(
@@ -198,7 +207,6 @@ private fun WriteCaptionRow(modifier: Modifier  , drawableId: Int = R.drawable.i
 }
 
 
-
 @Composable
 private fun MainContentCreatePost(context: Activity) {
     Scaffold(
@@ -212,7 +220,7 @@ private fun MainContentCreatePost(context: Activity) {
             PublishButton(context)
         }
 
-        ) { padding ->
+    ) { padding ->
 
         Column(
             modifier = Modifier.verticalScroll(rememberScrollState())
@@ -251,18 +259,19 @@ private fun MainContentCreatePost(context: Activity) {
 }
 
 @Composable
-private fun PublishButton(context : Context) {
+private fun PublishButton(context: Context) {
 
 
-
-    Column(modifier = Modifier.fillMaxWidth(),
-    horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Button(
 
 
             onClick = {
 
-                Toast.makeText(context,"Publish Changes", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Publish Changes", Toast.LENGTH_SHORT).show()
                 // do something here
             },
             Modifier
@@ -272,11 +281,9 @@ private fun PublishButton(context : Context) {
             colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.followBtnColor)),
 
             ) {
-            Text(text = "Publish", fontSize = 14.sp , color = Color.White)
+            Text(text = "Publish", fontSize = 14.sp, color = Color.White)
         }
     }
-
-
 
 
 }

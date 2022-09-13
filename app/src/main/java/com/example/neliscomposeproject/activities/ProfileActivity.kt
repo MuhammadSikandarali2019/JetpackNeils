@@ -71,11 +71,9 @@ private fun MainContent(context: Activity) {
             Modifier.padding(padding)
 
             ProfilePicture(R.drawable.editprofimg, R.string.editProfileImg)
-            Spacer(modifier = Modifier.height(16.dp))
+
             ProfileProperty(label = "Name", value = "Selena Grande")
-            Spacer(modifier = Modifier.height(16.dp))
             ProfileProperty(label = "Username", value = "Selena Grande")
-            Spacer(modifier = Modifier.height(16.dp))
             ProfileProperty(label = "Bio", stringResource(id = R.string.bio))
             Spacer(modifier = Modifier.height(24.dp))
             SaveChangesButton(context)
@@ -148,6 +146,7 @@ private fun ProfilePicture(
             )
         Spacer(modifier = modifier.height(8.dp))
     }
+    Spacer(modifier = Modifier.height(16.dp))
 }
 
 
@@ -173,6 +172,8 @@ fun ProfileProperty(label: String, value: String, isLink: Boolean = false) {
             style = style
         )
     }
+
+    Spacer(modifier = Modifier.height(8.dp))
 }
 
 @Preview
